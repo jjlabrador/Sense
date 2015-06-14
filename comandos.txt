@@ -1,0 +1,7 @@
+make micaz sim-sf (compilar simulacion con soporte para serial)
+
+//Programar por puerto SERIE el Master (id 0)
+make iris install,0 mib520,/dev/ttyUSB0
+make iris install,1 mib520,/dev/ttyUSB2
+
+

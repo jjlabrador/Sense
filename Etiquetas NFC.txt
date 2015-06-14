@@ -1,0 +1,64 @@
+Etiquetas NFC:
+
+  - NDEF: configurar en el manifest que solo el tipo de etiquetas NDEF sea la que produzcan eventos.
+  - MIME/TYPE -> texto plano
+
+Capítulo 5 libro de NFC: códigos de ejemplo de lectura
+
+
+Construir en javascript una cadena http y usar un plugin de phonegap (phonegap-http-request)
+
+Construir un objeto global HttpRequest():
+
+------------------
+.js
+
+var http = new HttpRequest();
+http.get("nuestra cadena con la url", function(status, data)); // podriamos hacer un post en lugar de este get, lo que diga Jonay.
+
+
+Emulador de Android para NFC
+----------------------------
+
+Open NFC
+
+  - Descargar SDK
+  
+	- connect-manager
+	- NFC simulator
+  
+      Al arrancar el NFC simulator se conecta con el connect-manager
+      
+      Configurar el emulador para que se pueda conectar al connect-manager:
+      
+	1) Arrancar simulador Android con el NFC
+	2) adb pull /data/connection_center_access
+		M [espacio] IP
+		Cambiar a:
+		S [espacio] IP del pc
+	3) adb push connection_center_access /data/connection_center_access
+	4) Apagar emulador y volver a arrancarlo
+	5) Luego deberia haber un panel en el connect-manager una conexion
+      
+      Al arrancar el emulador tambien se conecta con el connect-manager
+  
+      Si usamos dos maquinas separadas (Windows: NFC simulator + connect-manager y Linux: Emulador), hay que modificar la configuracion del connect-manager y habilitar conexiones de clientes en otras máquinas.
+      
+      Tambien se puede hacer por VirtualBox:
+	Configurar:
+	  Adaptador 1: modo NAT
+	  Adapatador 2: modo host-only-network
+		Crear nuevo adaptador y decirle en el guest cual es ese adaptador
+  
+  
+  - Distribución para Android
+  
+      android -> add-on -> avd   (copiar esto ahi debajo)*
+      
+      android-sdk -> add-on -> *
+
+      Añadir tambien source.properties (que Nacho nos pondrá en el campus virtual)
+      
+      > android avd
+	      
+	    target -> Open NFC no se qué.
